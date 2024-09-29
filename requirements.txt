@@ -49,7 +49,6 @@ python-dotenv>=1.0.0
 av==11.0.0
 gdown==4.6.0 
 mega.py
-pydub
 WhisperSpeech==0.8.9
 webdataset
 av=11.0.0
