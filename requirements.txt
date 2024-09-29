@@ -50,4 +50,4 @@ av==11.0.0
 gdown==4.6.0 
 mega.py
 webdataset
-av=11.0.0
+av==11.0.0
