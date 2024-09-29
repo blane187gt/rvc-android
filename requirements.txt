@@ -52,3 +52,4 @@ mega.py
 pydub
 WhisperSpeech==0.8.9
 webdataset
+av=11.0.0
