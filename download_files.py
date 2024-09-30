@@ -12,7 +12,8 @@ files = {
     "audios/someguy.mp3": "https://huggingface.co/Rejekts/project/resolve/main/someguy.mp3",
     "audios/somegirl.mp3": "https://huggingface.co/Rejekts/project/resolve/main/somegirl.mp3",
     "audios/unchico.mp3": "https://huggingface.co/Rejekts/project/resolve/main/unchico.mp3",
-    "audios/unachica.mp3": "https://huggingface.co/Rejekts/project/resolve/main/unachica.mp3"
+    "audios/unachica.mp3": "https://huggingface.co/Rejekts/project/resolve/main/unachica.mp3",
+    "a.png": "https://huggingface.co/Rejekts/project/resolve/main/a.png"
 }
 for file, link in files.items():
     file_path = os.path.join(cwd, file)
