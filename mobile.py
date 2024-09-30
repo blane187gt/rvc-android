@@ -225,8 +225,9 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                         maximum=config.n_cpu,
                         step=1,
                         label="Number of CPU processes used to extract pitch features",
-                        value=int(np.ceil(config.n_cpu / 1.5)),
-                        interactive=True,
+                        value=1,
+                        interactive=False,
+                        visible=False
                     )
                     sr2 = gr.Radio(
                         label="Sampling Rate",
@@ -262,12 +263,12 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                         outputs=[])
                     gpus6 = gr.Textbox(
                         label="Enter the GPU numbers to use separated by -, (e.g. 0-1-2)",
-                        value=gpus,
+                        value="",
                         interactive=True,
-                        visible=F0GPUVisible,
+                        visible=False,
                     )
                     gpu_info9 = gr.Textbox(
-                        label="GPU Info", value=gpu_info, visible=F0GPUVisible
+                        label="GPU Info", value=gpu_info, visible=False
                     )
                     spk_id5 = gr.Slider(
                         minimum=0,
@@ -288,14 +289,15 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                     f0method8 = gr.Radio(
                         label="F0 extraction method",
                         choices=["pm", "harvest", "dio", "rmvpe", "rmvpe_gpu"],
-                        value="rmvpe_gpu",
-                        interactive=True,
+                        value="pm",
+                        interactive=False,
+                        visible=False
                     )
                     gpus_rmvpe = gr.Textbox(
                         label="GPU numbers to use separated by -, (e.g. 0-1-2)",
-                        value="%s-%s" % (gpus, gpus),
-                        interactive=True,
-                        visible=F0GPUVisible,
+                        value="",
+                        interactive=False,
+                        visible=False,
                     )
                     but2 = gr.Button("2. Extract Features", variant="primary")
                     info2 = gr.Textbox(label="Information", value="", max_lines=8)
@@ -320,11 +322,11 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                     )
                 with gr.Column():
                     total_epoch11 = gr.Slider(
-                        minimum=2,
+                        minimum=5,
                         maximum=1000,
-                        step=1,
+                        step=5,
                         label="Epochs (more epochs may improve quality but takes longer)",
-                        value=150,
+                        value=100,
                         interactive=True,
                     )
                     but4 = gr.Button("3. Train Index", variant="primary")
@@ -335,7 +337,7 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                             label="GPUs separated by -, (e.g. 0-1-2)",
                             value="0",
                             interactive=True,
-                            visible=True
+                            visible=False,
                         )
                         save_epoch10 = gr.Slider(
                             minimum=1,
@@ -344,14 +346,16 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                             label="Weight Saving Frequency",
                             value=25,
                             interactive=True,
+                            visible=False
                         )
                         batch_size12 = gr.Slider(
                             minimum=1,
                             maximum=40,
                             step=1,
                             label="Batch Size",
-                            value=default_batch_size,
+                            value=1,
                             interactive=True,
+                            visible=False
                         )
                         if_save_latest13 = gr.Radio(
                             label="Only save the latest model",
@@ -365,12 +369,14 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                             choices=["yes", "no"],
                             value="no",
                             interactive=True,
+                            visible=False
                         )
                         if_save_every_weights18 = gr.Radio(
                             label="Save small model at every save point",
                             choices=["yes", "no"],
                             value="yes",
-                            interactive=True,
+                            interactive=False,
+                            visible=False
                         )
                         with gr.Accordion(label="Change pretrains", open=False):
                             pretrained = lambda sr, letter: [os.path.abspath(os.path.join('assets/pretrained_v2', file)) for file in os.listdir('assets/pretrained_v2') if file.endswith('.pth') and sr in file and letter in file]
