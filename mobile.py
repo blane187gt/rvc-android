@@ -6,8 +6,6 @@ os.makedirs("audios",exist_ok=True)
 model_library = CachedModels()
 subprocess.run(["python", "download_files.py"]) #in case you need the models still
 with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue="zinc")) as app:
-    with gr.Row():
-        gr.HTML("<img  src='file/a.png' alt='image'>")
     with gr.Tabs():
         with gr.TabItem("Inference"):
             with gr.Row():
@@ -202,8 +200,8 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                 )
         with gr.TabItem("Download Models"):
             with gr.Row():
-                url_input = gr.Textbox(label="URL to model", value="",placeholder="https://...", scale=6)
-                name_output = gr.Textbox(label="Save as", value="",placeholder="MyModel",scale=2)
+                url_input = gr.Textbox(label="URL to model (i.e. from huggingface)", value="",placeholder="https://...", scale=6)
+                name_output = gr.Textbox(label="Save as (if from hf, you may leave it blank)", value="",placeholder="MyModel",scale=2)
                 url_download = gr.Button(value="Download Model",scale=2)
                 url_download.click(
                     inputs=[url_input,name_output],
