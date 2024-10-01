@@ -7,7 +7,10 @@ model_library = CachedModels()
 
 with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue="zinc")) as app:
     with gr.Row():
-        gr.HTML("<img  src='file/a.png' alt='image'>")
+        with gr.Column():
+            gr.HTML("<img  src='file/a.png' alt='image'>")
+        with gr.Column():
+            gr.HTML("<a href='https://ko-fi.com/rejekts' target='_blank'><img src='file/kofi_button.png' alt='🤝 Support Me'></a>")
     with gr.Tabs():
         with gr.TabItem("Inference"):
             with gr.Row():
@@ -88,7 +91,7 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                             value=0.5,
                             interactive=True,
                         )
-                    output_player = gr.Audio(label="Output")
+                    output_player = gr.Audio(label="Output",interactive=False)
                     with gr.Accordion("General Settings", open=False):
                         f0method0 = gr.Radio(
                             label="Method",
@@ -467,7 +470,7 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                         )
 
     if config.iscolab:
-        app.queue(max_size=20).launch(share=True,allowed_paths=["a.png"],show_error=True)
+        app.queue(max_size=20).launch(share=True,allowed_paths=["a.png","kofi_button.png"],show_error=True)
     else:
         app.queue(max_size=1022).launch(
             server_name="0.0.0.0",
