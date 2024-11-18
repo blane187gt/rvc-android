@@ -90,10 +90,10 @@ with gr.Blocks(title="🔊",theme=gr.themes.Base(primary_hue="rose",neutral_hue=
                     with gr.Accordion("General Settings", open=False):
                         f0method0 = gr.Radio(
                             label="Method",
-                            choices=["pm"],
+                            choices=["pm", "rmvpe"],
                             value="pm",
-                            interactive=False,
-                            visible=False,
+                            interactive=True,
+                            visible=True,
                         )
                         filter_radius0 = gr.Slider(
                             minimum=0,
