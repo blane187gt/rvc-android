@@ -1,7 +1,43 @@
 <div align="center">
 
-<h1>easyGUI</h1>
+<h1>RVC Android</h1>
 A fork of Retrieval based Voice Conversion WebUI <br><br>
+
+# how to install
+
+
+## step 1: connect your vps
+you can connect your vps by using termux with
+
+```
+pkg install openssh
+```
+
+```
+ssh root@your vps id
+```
+
+## istep 2: install stuff
+
+you can statt installing by run 
+```
+git clone https://github.com/blane187gt/rvc-android
+cd rvc-android
+```
+
+```
+pip install -r requirements-android.txt
+```
+
+```
+python3 download_files.py
+```
+
+```
+python3 mobile.py
+```
+
+and tthen copy the public link
 
 ## Credits
 + [RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI)
